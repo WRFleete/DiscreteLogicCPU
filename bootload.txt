@@ -1,0 +1,12 @@
+ROM bootload
+Load in 248 bytes from ROM
+attached to IO port
+
+00: 40, F7	JMP F7
+.
+.
+.
+F7: 14, 00	OPI 00
+F9: 84, F8	INI F8
+FB: B5, F8	INC 1, F8
+FD: 40, F7	JMP F7
