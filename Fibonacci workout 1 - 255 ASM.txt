@@ -1,0 +1,23 @@
+00:	74 01 2E	MOV 1, 2E	'init some locations in memory
+03:	74 00 2D	MOV 0, 2D
+06:	74 01 31	MOV 10, 31	'set to iteration of fibonacci to calculate (max 13)
+09:	71 31		DEC 1, 31	'decrement iteration count
+0B:	28 1F		JPZ 1F		'when iteration count is zero jump to 1Fh
+
+0D:	04 2D		LDA 2D
+0F:	08 2E		ADD 2E
+11:	18 2F		STA 2F
+13:	04 2E		LDA 2E
+15:	18 2D		STA 2D
+17:	04 2F		LDA 2F
+19:	18 2E		STA 2E
+1B:	04 2D		LDA 2D
+1D:	10 09		JMP 09		'loop
+1F:	24 2E		OPM 2E		'output result from 2E
+21:	6D 07		INC 07, 1		
+23	30 27		JPC 27	
+25	A4		RET		
+
+27	FC		HLT		'stop
+
+74 01 2E 74 00 2D 74 0A 31 71 31 28 1F 04 2D 08 2E 18 2F 04 2E 18 2D 04 2F 18 2E 04 2D 10 09 24 2E 1C 99 80 1C 00 80 FC	

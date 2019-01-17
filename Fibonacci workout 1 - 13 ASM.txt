@@ -1,0 +1,25 @@
+00:	74 01 2E	MOV 1, 2E	'init some locations in memory
+03:	74 00 2D	MOV 0, 2D
+06:	74 01 31	MOV 1, 31	'set to iteration of fibonacci to calculate (max 13)
+09:	71 31		DEC 1, 31	'decrement iteration count
+0B:	28 1F		JPZ 1F		'when iteration count is zero jump to 1Fh
+
+0D:	04 2D		LDA 2D
+0F:	08 2E		ADD 2E
+11:	18 2F		STA 2F
+13:	04 2E		LDA 2E
+15:	18 2D		STA 2D
+17:	04 2F		LDA 2F
+19:	18 2E		STA 2E
+1B:	04 2D		LDA 2D
+1D:	10 09		JMP 09		'loop
+1F:	24 2E		OPM 2E		'output result from 2E
+21:	6D 07		INC 07, 1		
+23	7C		MOV A, D 	'Display iteration num on D register
+24	40 0D(13dec)	SUI 13(dec) 	'check if iteration count is 13
+26 	28 29		JPZ 29		'jump if result is 0
+28	A4		RET		'shortcut to reset PC to 0
+					'C register should be 0
+29	74 01 07	MOV 1, 7	'reset location 7 back to 1
+2C	FC		HLT		'stop
+
