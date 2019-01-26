@@ -1,12 +1,25 @@
-ROM bootload
-Load in 248 bytes from ROM
+ROM bootstrap
+Loads in 248 bytes from ROM
 attached to IO port
 
-00: 10, F7	JMP F7
+Newer bootstrap, uses A register, uses less space and has potential to be in a ROM
+
+00 10, F8
+
+F7: 00    NOP       'set to 00, will be set to A4 (return) when finished
+F8: 38    OUT A     'output value in A
+F9: A0    AIN       'use value in A as memory address then read inputs into there
+FA: AD    INC A, 1  'increment A
+FB: 10 F7 JMP F7    'loop
+
+
+Old bootstrap
+00: 10, F8	JMP F8
 .
 .
 .
-F7: 44, 00	OPI 00
-F9: 60, F8	INI F8
-FB: 6D, F8	INC 1, F8
-FD: 10, F7	JMP F7
+F7: 00
+F8: 44, 00	OPI 00
+FA: 60, F8	INI F8
+FC: 6D, F8	INC 1, F8
+FE: 10, F7	JMP F7
